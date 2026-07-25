@@ -13,7 +13,7 @@ services:
     volumes:
       - ./app:/app
     command: sh -c "npm install && npm start"
-
+    
   db:
     image: postgres:15-alpine
     environment:
