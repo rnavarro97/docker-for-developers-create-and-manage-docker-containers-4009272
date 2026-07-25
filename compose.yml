@@ -13,7 +13,9 @@ services:
     volumes:
       - ./app:/app
     command: sh -c "npm install && npm start"
-    
+    networks:
+      - appnet
+
   db:
     image: postgres:15-alpine
     environment:
@@ -22,6 +24,12 @@ services:
       POSTGRES_DB: messages
     volumes:
       - pgdata:/var/lib/postgresql/data
+    networks:
+      - appnet
 
 volumes:
   pgdata:
+
+networks:
+  appnet:
+    driver: bridge
